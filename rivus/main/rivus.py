@@ -879,9 +879,9 @@ def get_onset_names(entity):
         if entity.dimen > 1:
             # N-dimensional set tuples, possibly with nested set tuples within
             if entity.domain.name:
-                domains = entity.domain.set_tuple
+                domains = list(entity.domain.subsets())
             else:
-                domains = entity.set_tuple
+                domains = list(entity.subsets())
 
             for domain_set in domains:
                 labels.extend(get_onset_names(domain_set))
@@ -1266,7 +1266,7 @@ def plot(prob, commodity, plot_demand=False, mapscale=False, tick_labels=True,
                 font_size = 3 + 5 * math.sqrt(row[commodity]) / 200
                 # plot
                 bm.scatter(x, y, latlon=False,
-                           c=COLORS[commodity], s=marker_size,
+                           c=np.array([COLORS[commodity]]), s=marker_size,
                            marker=marker_style, lw=0.5,
                            edgecolor=(1, 1, 1), zorder=40)
                 # annotate at line midpoint
