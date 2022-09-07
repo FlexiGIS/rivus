@@ -37,7 +37,26 @@ COLORS = { # (R,G,B) tuples with range (0-255)
     'com': (129, 162, 190),
     'edu': (29, 103, 214),
     'ind': (240, 198, 116),
-    'res': (181, 189, 104)
+    'res': (181, 189, 104),
+    'industrial': (240, 198, 116),
+    'residential': (181, 189, 104),
+    'commercial': (129, 162, 190),
+    'basin': (110, 75, 56),
+    'chapel': (177, 121, 91),
+    'church': (177, 121, 91),
+    'farm': (202, 178, 214),
+    'farm_auxiliary': (106, 61, 154),
+    'garage': (253, 191, 111),
+    'greenhouse': (255, 127, 0),
+    'hospital': (129, 221, 190),
+    'hotel': (227, 26, 28),
+    'house': (181, 189, 104),
+    'office': (129, 162, 190),
+    'public': (129, 162, 190),
+    'restaurant': (227, 26, 28),
+    'retail': (129, 162, 190),
+    'school': (29, 103, 214),
+    'warehouse': (98, 134, 6)
 }
 to_rgb = lambda r,g,b: tuple(x/255. for x in (r,g,b))
 for key, val in COLORS.items():
