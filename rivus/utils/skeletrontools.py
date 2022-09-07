@@ -1,7 +1,5 @@
 from shapely.geometry import Polygon, LineString, Point, box
-
 import Skeletron
-import pandashp
 import shapely.ops
 
 

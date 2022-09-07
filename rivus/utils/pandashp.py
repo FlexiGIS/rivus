@@ -162,7 +162,8 @@ def match_vertices_and_edges(vertices, edges, vertex_cols=('Vertex1', 'Vertex2')
             #  change start -------
             # if line.touches(vertex) or line.intersects(vertex):
             #     edge_endpoints.append(vertices.index[k])
-            if vertex.buffer(0.001).intersects(line) or line.intersects(vertex):
+            # if vertex.buffer(0.001).intersects(line) or line.intersects(vertex):
+            if line.intersects(vertex):
                 edge_endpoints.append(vertices.index[k])
             #  change stop -------
 
