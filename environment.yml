@@ -8,22 +8,26 @@ name: rivus
 channels:
 - conda-forge
 dependencies:
-  - python=3.5 # can change in future
+  - python=3.6
   - numpy
-  - pandas
-  - xlrd
+  - pyomo=5.7
+  - pandas=0.23
+  - xlrd=1.2
   - openpyxl
-  - pyomo
-  - glpk
+  - coincbc
   - pyshp
   - shapely
   - basemap
   - pyproj
   - geopy
   - plotly
-  - networkx
   - psycopg2
   - sqlalchemy
-  - python-igraph # it works on the Linux RtD server.
+  - fiona
+  - python-igraph
+  - qhull # Skeletron dependency
+  - pip
   - pip:
-      - geopandas
+    - geopandas==0.3
+    - networkx==1.5 # Skeletron dependency
+    - streetnames # Skeletron dependency

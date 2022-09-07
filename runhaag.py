@@ -51,6 +51,9 @@ def setup_solver(optim):
         # reference with list of options
         # execute 'glpsol --help'
         pass
+    elif optim.name == 'cbc':
+        timeLimit = 600
+        optim.set_options(f'sec={timeLimit}')
     else:
         print("Warning from setup_solver: no options set for solver "
             "'{}'!".format(optim.name))
@@ -110,7 +113,7 @@ def run_scenario(scenario):
     prob = rivus.create_model(data, vertex, edge)
     if PYOMO3:
         prob = prob.create() # no longer needed in Pyomo 4+
-    optim = SolverFactory('gurobi')
+    optim = SolverFactory('cbc')
     optim = setup_solver(optim)
     result = optim.solve(prob, tee=True)
     if PYOMO3:
