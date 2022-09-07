@@ -47,7 +47,7 @@ data = rivus.read_excel(data_spreadsheet)
 prob = rivus.create_model(data, vertex, edge)
 if PYOMO3:
     prob = prob.create() # no longer needed in Pyomo 4<
-solver = SolverFactory('glpk')
+solver = SolverFactory('cbc')
 result = solver.solve(prob, tee=True)
 if PYOMO3:
     prob.load(result) #no longer needed in Pyomo 4<

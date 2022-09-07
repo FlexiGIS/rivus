@@ -801,13 +801,10 @@ def get_entities(instance, names):
         if df.empty:
             df = other
         else:
-            index_names_before = df.index.names
+            if other.index.names != df.index.names:
+                other.index.names = df.index.names
 
             df = df.join(other, how='outer')
-
-            if index_names_before != df.index.names:
-                df.index.names = index_names_before
-
     return df
 
 
@@ -881,7 +878,7 @@ def get_onset_names(entity):
     if isinstance(entity, pyomo.Set):
         if entity.dimen > 1:
             # N-dimensional set tuples, possibly with nested set tuples within
-            if entity.domain:
+            if entity.domain.name:
                 domains = entity.domain.set_tuple
             else:
                 domains = entity.set_tuple
@@ -890,9 +887,9 @@ def get_onset_names(entity):
                 labels.extend(get_onset_names(domain_set))
 
         elif entity.dimen == 1:
-            if entity.domain:
+            if entity.domain.name:
                 # 1D subset; add domain name
-                labels.append(entity.domain.name)
+                labels.append(entity.name)
             else:
                 # unrestricted set; add entity name
                 labels.append(entity.name)
